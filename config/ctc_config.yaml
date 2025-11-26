@@ -1,0 +1,40 @@
+# Configuration for CTC-based models (phoneme prediction)
+
+# Model configuration
+model:
+  data_input_size: 512
+  adapter_output_size: 256
+  hidden_size: 512
+  output_size: 41  # 40 phonemes + blank
+  num_layers: 1
+  bidirectional: false
+  dropout: 0.1
+  n_head: 8  # For Transformer/Conformer
+  num_layers: 6  # For Transformer/Conformer
+  dim_feedforward: 2048  # For Transformer/Conformer
+  conv_kernel_size: 31  # For Conformer
+
+# Training configuration
+batch_size: 32
+num_epochs: 50
+learning_rate: 1e-3
+weight_decay: 0.0
+grad_clip: 1.0
+use_augmentation: true
+
+# Data configuration
+num_workers: 4
+pin_memory: true
+
+# Checkpoint configuration
+checkpoint_dir: checkpoints/ctc
+
+# Augmentation configuration
+augmentation:
+  temporal_mask_prob: 0.3
+  temporal_mask_percentage: 0.1
+  electrode_dropout_prob: 0.2
+  electrode_dropout_rate: 0.1
+  gaussian_noise_prob: 0.25
+  gaussian_noise_std: 0.05
+

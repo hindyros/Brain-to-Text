@@ -1,0 +1,240 @@
+# Brain-to-Text Competition - Experiment TODO List
+
+## Architecture Experiments
+
+### 1. CTC-Based Models (Phoneme Prediction)
+- [ ] Experiment with different RNN variants (RNN, LSTM, GRU)
+  - [ ] Compare bidirectional vs unidirectional
+  - [ ] Test different numbers of layers (1, 2, 3)
+  - [ ] Experiment with hidden sizes (256, 512, 1024)
+- [ ] Transformer encoder models
+  - [ ] Vary number of layers (4, 6, 8, 12)
+  - [ ] Test different attention heads (4, 8, 16)
+  - [ ] Experiment with different feedforward dimensions
+- [ ] Conformer models (CNN + Transformer hybrid)
+  - [ ] Test different convolution kernel sizes
+  - [ ] Experiment with depthwise vs standard convolution
+- [ ] Hybrid architectures
+  - [ ] CNN frontend + RNN backend
+  - [ ] Multi-scale feature extraction
+  - [ ] Hierarchical attention mechanisms
+
+### 2. End-to-End Models (Direct Neural -> Text)
+- [ ] Transformer encoder-decoder models
+  - [ ] Vary encoder/decoder depth ratio
+  - [ ] Test different attention mechanisms (multi-head, local attention)
+- [ ] Conformer-based encoder-decoder
+- [ ] Cross-attention mechanisms between neural and text domains
+- [ ] Pre-trained language model integration (GPT-2, BERT, etc.)
+
+### 3. Advanced Architectures
+- [ ] Diffusion-based models (DSD-NLA approach)
+  - [ ] Diffusion prior for latent alignment
+  - [ ] Cross-modal contrastive learning
+- [ ] Variational autoencoders (VAE) for latent space learning
+- [ ] Adversarial training (GANs) for better feature learning
+- [ ] Memory-augmented networks (Neural Turing Machines, etc.)
+
+## Data Augmentation
+
+### Temporal Augmentations
+- [ ] Temporal masking (already implemented)
+  - [ ] Experiment with different mask percentages (5%, 10%, 15%, 20%)
+  - [ ] Test continuous vs random masking
+- [ ] Time warping (speed up/slow down)
+- [ ] Temporal cropping/padding
+- [ ] Mixup/CutMix for sequences
+
+### Feature Augmentations
+- [ ] Electrode dropout (already implemented)
+  - [ ] Test different dropout rates
+  - [ ] Correlated electrode dropout (drop entire brain regions)
+- [ ] Gaussian noise (already implemented)
+  - [ ] Test different noise levels
+- [ ] Feature scaling/shifting
+- [ ] Channel shuffling (within brain regions)
+
+### Advanced Augmentations
+- [ ] Mixup between different trials
+- [ ] SpecAugment-style masking (2D masking)
+- [ ] Adversarial augmentation (using gradient-based perturbations)
+
+## Training Strategies
+
+### Loss Functions
+- [ ] CTC loss (baseline)
+  - [ ] Experiment with different blank token strategies
+- [ ] Connectionist Temporal Classification variants
+  - [ ] Focal CTC loss
+  - [ ] Label smoothing with CTC
+- [ ] Transducer loss (RNN-T)
+- [ ] Cross-entropy for end-to-end models
+- [ ] Multi-task learning
+  - [ ] Joint phoneme + word prediction
+  - [ ] Auxiliary tasks (speaker identification, etc.)
+
+### Optimization
+- [ ] Learning rate schedules
+  - [ ] OneCycleLR (already implemented for e2e)
+  - [ ] Cosine annealing with warm restarts
+  - [ ] Exponential decay
+- [ ] Optimizers
+  - [ ] AdamW (already implemented)
+  - [ ] Adam with different betas
+  - [ ] SGD with momentum
+  - [ ] LAMB optimizer
+- [ ] Gradient accumulation for larger effective batch sizes
+- [ ] Mixed precision training (already implemented for e2e)
+
+### Regularization
+- [ ] Dropout variations
+  - [ ] Spatial dropout
+  - [ ] Variational dropout
+- [ ] Weight decay (L2 regularization)
+- [ ] Label smoothing
+- [ ] Early stopping (implement patience-based stopping)
+
+## Language Model Integration
+
+### N-gram Language Models
+- [ ] Test different n-gram orders (1, 2, 3, 4, 5)
+- [ ] Corpus-specific language models
+  - [ ] Separate models for different sentence types
+  - [ ] Adaptive model selection based on corpus detection
+- [ ] Kneser-Ney smoothing
+- [ ] Modified Kneser-Ney smoothing
+
+### Neural Language Models
+- [ ] GPT-2 for rescoring
+- [ ] BERT for context-aware rescoring
+- [ ] Fine-tuned language models on competition data
+- [ ] Ensemble of multiple language models
+
+### Decoding Strategies
+- [ ] Greedy decoding (baseline)
+- [ ] Beam search
+  - [ ] Test different beam widths (3, 5, 10, 20)
+  - [ ] Length normalization
+- [ ] Nucleus (top-p) sampling
+- [ ] Temperature sampling
+- [ ] MBR (Minimum Bayes Risk) decoding
+
+## Post-Processing
+
+### Text Normalization
+- [ ] Spell checking (already implemented in some notebooks)
+- [ ] Grammar correction
+- [ ] Punctuation restoration
+- [ ] Capitalization restoration
+
+### Language Model Rescoring
+- [ ] GPT-2 perplexity-based selection
+- [ ] BERT-based scoring
+- [ ] Ensemble rescoring
+
+## Transfer Learning
+
+### Pre-training
+- [ ] Pre-train on Brain-to-Text '24 dataset (T12)
+- [ ] Pre-train encoder on other neural datasets
+- [ ] Pre-train decoder on large text corpora
+- [ ] Self-supervised pre-training (masked language modeling, etc.)
+
+### Fine-tuning
+- [ ] Progressive fine-tuning (freeze early layers)
+- [ ] Differential learning rates
+- [ ] Domain adaptation techniques
+
+## Ensemble Methods
+
+- [ ] Model ensemble
+  - [ ] Average predictions from multiple models
+  - [ ] Weighted ensemble based on validation performance
+  - [ ] Stacking with meta-learner
+- [ ] Test-time augmentation (TTA)
+  - [ ] Multiple augmented versions of same input
+  - [ ] Average or vote over predictions
+- [ ] Cross-validation ensemble
+  - [ ] Train multiple models on different folds
+  - [ ] Ensemble predictions
+
+## Hyperparameter Optimization
+
+- [ ] Grid search for key hyperparameters
+- [ ] Random search
+- [ ] Bayesian optimization (Optuna, Hyperopt)
+- [ ] Population-based training (PBT)
+
+## Evaluation & Analysis
+
+- [ ] Ablation studies
+  - [ ] Remove each component and measure impact
+  - [ ] Feature importance analysis
+- [ ] Error analysis
+  - [ ] Analyze which types of errors are most common
+  - [ ] Per-corpus performance breakdown
+  - [ ] Confusion matrices for phonemes/words
+- [ ] Visualization
+  - [ ] Attention weight visualization
+  - [ ] Feature space visualization (t-SNE, UMAP)
+  - [ ] Training curves and metrics
+
+## Advanced Techniques
+
+### Test-Time Adaptation
+- [ ] Continuous fine-tuning on test data (if allowed)
+- [ ] Online adaptation during inference
+- [ ] Few-shot learning for new speakers/styles
+
+### Multi-Modal Approaches
+- [ ] Incorporate session metadata
+- [ ] Use block-level corpus information (if detectable)
+- [ ] Leverage speaking strategy information (if detectable)
+
+### Efficiency Improvements
+- [ ] Model quantization
+- [ ] Knowledge distillation (teacher-student)
+- [ ] Pruning
+- [ ] Faster inference with optimized decoders
+
+## Specific Competition Considerations
+
+- [ ] Handle different speaking rates (30 vs 50 words/min)
+- [ ] Adapt to different speaking strategies (vocalized vs silent)
+- [ ] Generalize across different sentence corpora
+  - [ ] 50-word vocabulary
+  - [ ] Switchboard
+  - [ ] Openwebtext2
+  - [ ] Harvard sentences
+  - [ ] Random word sentences
+- [ ] Session-to-session adaptation (20 months of data)
+- [ ] Handle missing or corrupted data gracefully
+
+## Implementation Priorities
+
+### High Priority (Likely High Impact)
+1. Transformer/Conformer models
+2. Better language model integration (5-gram or neural LM)
+3. Data augmentation tuning
+4. Model ensemble
+5. Beam search decoding
+
+### Medium Priority
+1. End-to-end models (bypass phonemes)
+2. Transfer learning from T12 dataset
+3. Test-time augmentation
+4. Advanced post-processing
+
+### Low Priority (Experimental)
+1. Diffusion models
+2. Adversarial training
+3. VAE/GAN approaches
+4. Memory-augmented networks
+
+## Notes
+
+- Baseline WER: 6.70%
+- Target: < 5% WER (top teams in '24 achieved ~5.77%)
+- Key constraint: Cannot use corpus information at test time
+- Focus on generalization across all sentence types
+

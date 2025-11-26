@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (large, should be downloaded separately)
+dataset/
+*.hdf5
+*.h5
+
+# Model checkpoints and logs
+checkpoints/
+logs/
+*.ckpt
+*.pth
+*.pt
+training_log
+*.csv
+
+# Output files
+submissions/
+outputs/
+results/
+
+# Environment variables
+.env
+.env.local
+

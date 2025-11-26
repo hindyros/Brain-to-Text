@@ -1,0 +1,29 @@
+# Core dependencies
+torch>=2.0.0
+torchaudio>=2.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+h5py>=3.9.0
+pyyaml>=6.0
+tqdm>=4.65.0
+
+# Evaluation metrics
+jiwer>=3.0.0
+
+# Visualization (optional)
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Language models for post-processing (optional)
+transformers>=4.30.0
+
+# Spell checking (optional)
+pyspellchecker>=0.8.0
+
+# Language tools (optional)
+language-tool-python>=2.9.0
+
+# Development tools (optional)
+jupyter>=1.0.0
+ipython>=8.0.0
+
